@@ -16,11 +16,12 @@ public class SecurityConfig {
 	auth.inMemoryAuthentication().withUser("admin").password("{noop}1234").roles("USER","ADMIN");
 	auth.inMemoryAuthentication().withUser("user").password("{noop}1234").roles("USER");
 	}
+	@SuppressWarnings("deprecation")
 	protected void configure(HttpSecurity http) throws Exception {
 		http.formLogin();
 		http.csrf().disable();
 		http.authorizeRequests().requestMatchers("/login/**","register/**");
-		http.authorizeRequests().requestMatchers(HttpMethod.POST,"/tasks/**").hasRole("ADMIN");
+		http.authorizeRequests().requestMatchers(HttpMethod.POST,"/tasks").hasRole("ADMIN");
 		http.authorizeRequests().anyRequest().authenticated();
 		}
 }
