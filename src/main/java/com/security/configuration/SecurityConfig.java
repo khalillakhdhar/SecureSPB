@@ -20,6 +20,7 @@ public class SecurityConfig {
 	auth.inMemoryAuthentication().withUser("admin").password("{noop}1234").roles("USER","ADMIN");
 	auth.inMemoryAuthentication().withUser("user").password("{noop}1234").roles("USER");
 	}
+<<<<<<< HEAD
 	@Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http.authorizeHttpRequests()
@@ -30,4 +31,13 @@ public class SecurityConfig {
         return http.build();
         
     }
+=======
+	protected void configure(HttpSecurity http) throws Exception {
+		http.formLogin();
+		http.csrf().disable();
+		http.authorizeRequests().requestMatchers("/login/**","register/**");
+		http.authorizeRequests().requestMatchers(HttpMethod.POST,"/tasks/**").hasRole("ADMIN");
+		http.authorizeRequests().anyRequest().authenticated();
+		}
+>>>>>>> parent of 9446e79 (Update SecurityConfig.java)
 }
