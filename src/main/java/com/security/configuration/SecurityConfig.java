@@ -21,6 +21,7 @@ public class SecurityConfig {
 	auth.inMemoryAuthentication().withUser("user").password("{noop}1234").roles("USER");
 	}
 <<<<<<< HEAD
+<<<<<<< HEAD
 	@Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http.authorizeHttpRequests()
@@ -32,6 +33,8 @@ public class SecurityConfig {
         
     }
 =======
+=======
+>>>>>>> parent of 9446e79 (Update SecurityConfig.java)
 	protected void configure(HttpSecurity http) throws Exception {
 		http.formLogin();
 		http.csrf().disable();
